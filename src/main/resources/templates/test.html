@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="#"/>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        xmlhttp = new XMLHttpRequest();
+
+        function findUser() {
+            var url = "findUser";
+            //alert(url);
+            xmlhttp.onreadystatechange = function (result) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    //alert("!"+result);
+                    document.getElementById("user").innerHTML = xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+
+        function deleteUser() {
+            var url = "deleteUser";
+            xmlhttp.onreadystatechange = function (result) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    alert("delete ok");
+                    findUser();
+                }
+            }
+            var userId = document.getElementById("userId").value;
+            xmlhttp.open("GET", url + "?id=" + userId, true);
+            xmlhttp.send();
+        }
+
+        function insertUser() {
+            alert("!!!");
+            var params = getInfo();
+            alert(params);
+            var url = "insertUser";
+
+            $.post(url, params, function (result) {
+                alert(result.message);
+            })
+        }
+
+
+        function getInfo() {
+            // var param=new FormData();
+            // param.append('name',document.getElementById('userName').val());
+            // param.append('sex',document.getElementById('userSex').val());
+            // param.append('age',document.getElementById('userAge').val());
+            // alert(param)
+            // return param;
+            var param = {
+                name: $("#userName").val(),
+                sex: $("#userSex").val(),
+                age: $("#userAge").val()
+            }
+            alert(param)
+            return param;
+        }
+    </script>
+</head>
+<body>
+<div>
+    <button onclick="findUser()">显示数据</button>
+    <span id="user"/>
+</div>
+<div>
+    <input id="userId" type="text" name="用户id"/>
+    <button onclick="deleteUser()">删除用户</button>
+</div>
+<div>
+    <input id="userName" type="text" name="姓名"/>
+    <input id="userSex" type="text" name="性别"/>
+    <input id="userAge" type="text" name="年龄"/>
+    <button onclick="insertUser()">新增用户</button>
+    <button onclick="updateUser()">更新数据</button>
+</div>
+</body>
+</html>
