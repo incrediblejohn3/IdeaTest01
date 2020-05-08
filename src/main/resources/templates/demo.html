@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <script type="text/javascript">
+        xmlhttp=new XMLHttpRequest();
+
+        function showTable(){
+            var url="showTable";
+            //alert(url);
+            xmlhttp.onreadystatechange=function(result)
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    //alert("!"+result);
+                    document.getElementById("table").innerHTML=xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("GET",url,true);
+            xmlhttp.send();
+        }
+
+        function showData(){
+            var url="showData";
+            xmlhttp.onreadystatechange=function(result)
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    // alert(document.getElementById("tableName").value);
+                    document.getElementById("data").innerHTML=xmlhttp.responseText;
+                }
+            }
+            var msg = document.getElementById("tableName").value;
+            xmlhttp.open("GET",url+"?tableName="+msg,true);
+            xmlhttp.send();
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Demo</h1>
+<button onclick="showTable()">show table</button>
+<input id="tableName" type="text" name="tableName">
+<button onclick="showData()">show data</button>
+<div id="table"></div>
+<div id="data"></div>
+
+</body>
+</html>
