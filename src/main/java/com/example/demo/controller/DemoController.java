@@ -62,16 +62,24 @@ public class DemoController {
         return "insert ok";
     }
 
+    @RequestMapping("findUserById")
+    @ResponseBody
+    public User findUserById(Integer id){
+        return demoService.findUserById(id);
+    }
+
     @RequestMapping("updateUser")
     @ResponseBody
-    public int updateUser(User user){
-        return demoService.updateUser(user);
+    public String updateUser(User user){
+        demoService.updateUser(user);
+        return "update ok";
     }
 
     @RequestMapping("deleteUser")
     @ResponseBody
-    public int deleteUser(Integer id){
-        return demoService.deleteUser(id);
+    public String deleteUser(Integer id){
+        demoService.deleteUser(id);
+        return "delete ok";
     }
 
 }

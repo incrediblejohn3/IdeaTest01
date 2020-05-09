@@ -13,4 +13,6 @@ public interface DemoService {
     int insertUser(User user);
     int updateUser(User user);
     int deleteUser(Integer id);
+
+    User findUserById(Integer id);
 }

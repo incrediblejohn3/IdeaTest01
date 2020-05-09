@@ -25,4 +25,7 @@ public interface DemoDao {
 
     int insertUser(User user);
     int updateUser(User user);
+
+    @Select("select name,sex,age from test where id=${id}")
+    User findUserById(@Param("id") Integer id);
 }

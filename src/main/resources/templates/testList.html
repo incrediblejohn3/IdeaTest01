@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function findUser() {
+            // var url = "findUser";
+            // $.get(url, function (result) {
+            //     //alert(result)
+            //     for (var i = 0; i < result.length; i++) {
+            //         $("#list").append("<input type='radio' value='" + result[i] + "'/><br>")
+            //     }
+            // });
+
+            $.ajax({
+                type: "POST",
+                url: "findUser",
+                dataType: "List",
+                async: false,     //如果设置为false，则表示异步提交，否则表示同步提交
+                timeout: 10000,
+                success: function(data){
+                    $("#list").append("<input type='radio' value='" + result[i] + "'/><br>")
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="findUser()">显示数据</button>
+    <div id="list"/>
+</body>
+</html>

@@ -51,5 +51,15 @@ public class DemoServiceImpl implements DemoService {
         return i;
     }
 
+    @Override
+    public User findUserById(Integer id) {
+        if (id<1)
+            throw new IllegalArgumentException("id错误");
+        User result = demoDao.findUserById(id);
+        if(result==null)
+            throw new IllegalArgumentException("用户不存在");
+        return result;
+    }
+
 
 }
