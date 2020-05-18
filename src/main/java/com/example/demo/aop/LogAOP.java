@@ -16,9 +16,11 @@ public class LogAOP {
         long runTime = endTime - startTime;
         String targetName = joinPoint.getSignature().getDeclaringTypeName();
         String methodName = joinPoint.getSignature().getName();
+        System.out.println("——————————————————");
         System.out.println("类名："+targetName);
         System.out.println("方法名："+methodName);
         System.out.println("执行时间："+runTime);
+        System.out.println("——————————————————");
         return object;
     }
 }
