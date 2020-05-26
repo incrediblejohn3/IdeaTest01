@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface CartService {
     List<Cart> findCart();
+    int deleteCart(Integer id);
+
+    int insertCart(Integer num, Integer id);
+
 }

@@ -13,6 +13,7 @@ public class Cart {
     private Integer uid;
     private Integer gid;
     private String name;
+    private String title;
     private Double price;
     private Integer num;
     private String image;
